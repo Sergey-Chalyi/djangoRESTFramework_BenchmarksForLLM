@@ -16,7 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from benchmarks.views import AverageResultsView, AverageResultsByTimeView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    path('results/average/', AverageResultsView.as_view(), name='average_results'),
+    path('results/average/<str:start_time>/<str:end_time>/', AverageResultsByTimeView.as_view(), name='average_results_by_time'),
+
 ]
