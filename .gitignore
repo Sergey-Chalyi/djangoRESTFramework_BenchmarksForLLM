@@ -1,0 +1,20 @@
+# ignore bite-code files
+*.pyc
+*.pyo
+__pycache__/
+
+# SQlite
+base/db.sqlite3
+
+# virtual invironment
+.venv/
+
+# IDE
+.idea/
+.vscode/
+
+# security
+.env
+
+# others
+test_task.txt
