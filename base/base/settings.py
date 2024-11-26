@@ -44,6 +44,8 @@ INSTALLED_APPS = [
 
     'rest_framework', # django REST framework
 
+    'benchmarks.apps.BenchmarksConfig' # new app
+
 ]
 
 MIDDLEWARE = [
