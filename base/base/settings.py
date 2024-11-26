@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-2ukp@ujm1$mq7^fx0iovtgbx016od8fq03)smcfc%9-+_2zya)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('SUPERBENCHMARK_DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'rest_framework', # django REST framework
 
     'benchmarks.apps.BenchmarksConfig' # new app
-
 ]
 
 MIDDLEWARE = [
