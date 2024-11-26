@@ -12,8 +12,16 @@ from rest_framework.response import Response
 from datetime import datetime
 
 
+class FeatureNotReadyException(APIException):
+    status_code = 501
+    default_detail = "This feature is not ready for live yet."
+    default_code = "feature_not_ready"
+
 class AverageResultsView(APIView):
     def get(self, request):      
+        if not settings.DEBUG:
+            raise FeatureNotReadyException()
+        
         averages = Benchmark.objects.aggregate(
             avg_token_count=Avg('token_count'),
             avg_time_to_first_token=Avg('time_to_first_token'),
@@ -25,6 +33,9 @@ class AverageResultsView(APIView):
 
 class AverageResultsByTimeView(APIView):
     def get(self, request, start_time, end_time):
+        if not settings.DEBUG:
+            raise FeatureNotReadyException()
+
         try:
             start_time = datetime.fromisoformat(start_time)
             end_time = datetime.fromisoformat(end_time)
