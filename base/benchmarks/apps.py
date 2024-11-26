@@ -9,6 +9,17 @@ class BenchmarksConfig(AppConfig):
     name = 'benchmarks'
 
     def ready(self):
+        """
+        This method is called when the application is ready to perform any initialization tasks.
+        It checks if the DEBUG setting is enabled and, if so, attempts to load test data.
+        If the DEBUG setting is disabled, it prints a message indicating that test data loading is skipped.
+
+        Parameters:
+        None
+
+        Returns:
+        None
+        """
         if settings.DEBUG:
             try:
                 load_test_data()

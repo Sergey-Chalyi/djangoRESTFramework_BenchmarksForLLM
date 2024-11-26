@@ -2,7 +2,23 @@ import json
 import os
 
 def load_test_data(json_file='test_database.json'):
-    from .models import Benchmark
+    """
+    Load and process benchmarking results from a JSON file, and store them in the database.
+
+    Parameters:
+    json_file (str): The path to the JSON file containing benchmarking results.
+                      Defaults to 'test_database.json' if not provided.
+
+    Returns:
+    None
+
+    Raises:
+    FileNotFoundError: If the specified JSON file is not found.
+
+    The function reads the JSON file, extracts the benchmarking results, and updates or creates
+    corresponding records in the Benchmark model.
+    """
+    from .models import Benchmark # to avoid cycle imports
 
     if not os.path.exists(json_file):
         raise FileNotFoundError(f"{json_file} not found.")
